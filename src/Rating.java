@@ -9,7 +9,7 @@ import org.apache.hadoop.mapreduce.lib.input.TextInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
 
-   public class Video_rating {
+   public class Rating {
 
     public static class Map extends Mapper<LongWritable, Text, Text,
 FloatWritable> {
@@ -23,8 +23,7 @@ throws IOException, InterruptedException {
 
           if(str.length > 7){
                 video_name.set(str[0]);
-                if(str[6].matches("\\d+.+")){ //this regular expression
-specifies that the string should contain only floating values
+                if(str[6].matches("\\d+.+")){ //this regular expression specifies that the string should contain only floating values
                 float f=Float.parseFloat(str[6]); //typecasting string to float
                 rating.set(f);
                 }
@@ -57,7 +56,7 @@ Context context)
 
            @SuppressWarnings("deprecation")
                 Job job = new Job(conf, "videorating");
-           job.setJarByClass(Video_rating.class);
+           job.setJarByClass(Rating.class);
 
            job.setMapOutputKeyClass(Text.class);
            job.setMapOutputValueClass(FloatWritable.class);

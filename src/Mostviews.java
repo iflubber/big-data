@@ -9,7 +9,7 @@ import org.apache.hadoop.mapreduce.lib.input.TextInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
 
-   public class Video_views {
+   public class Mostviews {
 
     public static class Map extends Mapper<LongWritable, Text, Text,
 IntWritable> {
@@ -54,7 +54,7 @@ Context context)
 
            @SuppressWarnings("deprecation")
                 Job job = new Job(conf, "video_views");
-           job.setJarByClass(Video_views.class);
+           job.setJarByClass(Mostviews.class);
 
            job.setMapOutputKeyClass(Text.class);
            job.setMapOutputValueClass(IntWritable.class);

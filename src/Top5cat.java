@@ -11,7 +11,7 @@ import org.apache.hadoop.mapreduce.lib.input.TextInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
 
-   public class Top5_categories {
+   public class Top5cat {
 
     public static class Map extends Mapper<LongWritable, Text, Text,
 IntWritable> {
@@ -52,7 +52,7 @@ Context context)
 
            @SuppressWarnings("deprecation")
                 Job job = new Job(conf, "categories");
-           job.setJarByClass(Top5_categories.class);
+           job.setJarByClass(Top5cat.class);
 
            job.setMapOutputKeyClass(Text.class);
            job.setMapOutputValueClass(IntWritable.class);
