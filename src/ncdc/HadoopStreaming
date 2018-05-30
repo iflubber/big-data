@@ -1,0 +1,22 @@
+-- test
+cat /home/cloudera/workspace/big-data/data/sample.txt | /home/cloudera/workspace/big-data/src/ncdc/max_temperature_map.py | sort | /home/cloudera/workspace/big-data/src/ncdc/max_temperature_reduce.py
+
+-- execute
+
+hadoop jar /usr/lib/hadoop-mapreduce/hadoop-streaming.jar \
+-files /home/cloudera/workspace/big-data/src/ncdc/max_temperature_map.py,\
+/home/cloudera/workspace/big-data/src/ncdc/max_temperature_reduce.py \
+-input /user/cloudera/input/ncdc/sample.txt \
+-output /user/cloudera/output/ncdc \
+-mapper 'python max_temperature_map.py' \
+-combiner max_temperature_reduce.py \
+-reducer max_temperature_reduce.py
+
+hadoop jar /usr/lib/hadoop-mapreduce/hadoop-streaming.jar \
+-files /home/cloudera/workspace/big-data/src/ncdc/max_temperature_map.py,\
+/home/cloudera/workspace/big-data/src/ncdc/max_temperature_reduce.py \
+-input /user/cloudera/input/ncdc \
+-output /user/cloudera/output/ncdc \
+-mapper 'python max_temperature_map.py' \
+-combiner max_temperature_reduce.py \
+-reducer max_temperature_reduce.py

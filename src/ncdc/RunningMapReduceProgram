@@ -1,0 +1,3 @@
+hadoop jar MaxTemperature.jar /user/cloudera/input/ncdc/sample.txt /user/cloudera/output/ncdc
+
+hadoop jar MaxTemperature.jar /user/cloudera/input/ncdc /user/cloudera/output/ncdc
